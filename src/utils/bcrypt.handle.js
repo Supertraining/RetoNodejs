@@ -7,8 +7,8 @@ module.exports = {
     return passwordHash;
   },
 
-  verified : async (password, passwordHash) => {
-    const isCorrect = await compare(password, passwordHash);
+  verifyPassword : async (password, passwordHash) => {
+    const isCorrect = await bcrypt.compare(password, passwordHash);
     return isCorrect;
   }
 }
