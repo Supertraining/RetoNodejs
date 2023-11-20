@@ -34,10 +34,11 @@ class TaskController {
       const { id, username, date, name, description } = req.body;
       const task = await models.Tasks.findByPk(id);
       if (!task) {
-        return res.status(404).json({ error: 'Task not found' });
+        res.status(404).json({ error: 'Task not found' });
+      } else {
+        await task.update({username, date, name, description});
+        res.json({ message: 'Task updated successfully' });
       }
-      await task.update({username, date, name, description});
-      res.json({ message: 'Task updated successfully' });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
@@ -59,13 +60,13 @@ class TaskController {
     try {
       const { id } = req.params;
       const taskToDelete = await this.taskService.deleteTask(id);
-      if (taskToDelete === 0) {
-        return res.status(404).json({ error: 'Task not found' });
-      }
-      res.json({ message: 'Task deleted successfully' });
+      taskToDelete === 0 
+      ? res.status(404).json({ error: 'Task not found' })
+      : res.json({ message: 'Task deleted successfully' });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
   }
 
 }
+
