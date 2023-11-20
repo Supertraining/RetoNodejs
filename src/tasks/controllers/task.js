@@ -1,6 +1,6 @@
 const TaskService = require('../services/task');
 
-class TaskController {
+class TaskControllers {
 
   constructor() {
     this.taskService = new TaskService()
@@ -70,3 +70,4 @@ class TaskController {
 
 }
 
+module.exports = TaskControllers;
