@@ -18,6 +18,11 @@ const TaskSchema = {
         type: DataTypes.DATE,
         allowNull: false,
     },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+
+    },
     description: {
         type: DataTypes.STRING,
     }
