@@ -1,6 +1,7 @@
 const authorize = (requiredRole) => {
     return async (req, res, next) => {
         try {
+           
             const user = req.user;
            
             if (user && user.role === requiredRole) {
